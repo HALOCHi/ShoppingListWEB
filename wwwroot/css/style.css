@@ -1,0 +1,234 @@
+body {
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  color: rgba(9, 9, 9, 1);
+  background-color: rgba(255, 255, 255, 1);
+  font-weight: 400;
+}
+
+/* header */
+
+  .page-header {
+    margin: 0;
+    padding: 0 0 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(77, 129, 183, 1);
+    color: rgba(255, 255, 255, 1);
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+
+  h1 {
+    font-size: 24px;
+    line-height: 32px; 
+  }
+
+  .logo {
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+/* main */
+
+  .main-content {
+    margin: 0 20px;
+    padding: 0;
+    font-weight: 600;
+  }
+
+  .hero {
+    margin: 0 0 60px 10px;
+    padding: 0;
+  }
+
+  .reg-window {
+    border-radius: 20px;
+    background-color: rgba(77, 129, 183, 1);
+    margin: 0;
+    padding: 20px;
+    color: rgba(255, 255, 255, 1);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px; 
+    display: inline-block;
+  }
+
+  .ent_and_reg {
+    margin: 60px 0 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+  }
+
+  .reg-window a {
+    text-decoration: none;
+    border-radius: 20px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 1);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 8px 12px;
+    color: rgba(77, 129, 183, 1);
+  }
+
+  .entrance {
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+  }
+
+  .entrance_form {
+    width: 300px;
+    margin: 100px 20px;
+    padding: 80px 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 40px;
+    border-radius: 20px;
+    background-color: rgba(77, 129, 183, 1);
+    color: rgba(255, 255, 255, 1);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px; 
+  }
+
+  .entrance_form input {
+    border-radius: 20px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 1);
+    width: 215px;
+    color: rgba(77, 129, 183, 1);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .entrance_button {
+    height: 24px;
+  }
+
+/* list */
+
+/* Уберем отступы и поля у списков */
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+/* Стили элементов списков */
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  font-size: 18px;
+  transition: 0.2s;
+  border: 0.5px solid rgba(213, 223, 233, 1);
+  border-radius: 4px;
+  margin: 20px 0;
+
+  /* делаем элементы списка невыбираемыми */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Делаем фоновый цвет темнее при наведении курсора */
+ul li:hover {
+  background: rgba(213, 223, 233, 1);
+}
+
+/* При нажатии добавляем фоновый цвет и перечеркиваем текст */
+ul li.checked {
+  background: rgba(213, 223, 233, 1);
+  color: rgba(77, 129, 183, 1);
+  text-decoration: line-through;
+}
+
+/* При нажатии добавляем метку "отмечено" */
+ul li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: rgba(77, 129, 183, 1);;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+/* Стиль кнопки закрытия */
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Стиль заголовка */
+.list_header {
+  padding: 30px 40px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+/* Сбросим обтекание после заголовка */
+.list_header:after {
+  content: "";
+  display: table;
+  clear: both;
+} 
+
+/* Стили поля ввода */
+#list_input {
+  margin: 0;
+  border: 0.5px solid rgba(9, 9, 9, 1);
+  border-radius: 4px;
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 10px;
+  float: left;
+  font-size: 18px;
+}
+
+/* Стили кнопки "Добавить" */
+.addBtn {
+  padding: 10px;
+  width: 20%;
+  background: rgba(213, 223, 233, 1);
+  color: rgba(9, 9, 9, 1);
+  float: left;
+  text-align: center;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 4px;
+}
+
+.addBtn:hover {
+  background-color: rgba(77, 129, 183, 1);
+}
+  
+@media screen and (min-width: 350px) and (max-width: 729px){
+
+}
+ 
