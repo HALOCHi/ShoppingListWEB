@@ -1,54 +1,39 @@
-$(document).ready(function () {
-    $('#registerForm').submit(function (event) {
-        event.preventDefault(); // Предотвращаем стандартную отправку формы
+document.getElementById('registrationForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-        $.ajax({
-            type: "POST",
-            url: "/Account/Register",
-            data: $(this).serialize(), // Сериализуем данные формы
-            dataType: "json",
-            success: function (response) {
-                if (response.success) {
-                    // Успех! Перенаправляем на страницу входа
-                    window.location.href = response.redirectUrl;
-                } else {
-                    // Обработка ошибок
-                    let errorMessage = "";
-                    if (response.error) {
-                        // Одно сообщение об ошибке
-                        errorMessage = response.error;
-                    } else if (response.errors && response.errors.length > 0) {
-                        // Несколько ошибок, создаём отформатированный список
-                        errorMessage = "<ul>";
-                        $.each(response.errors, function (index, error) {
-                            errorMessage += "<li>" + error + "</li>";
-                        });
-                        errorMessage += "</ul>";
-                    } else {
-                        // Общее сообщение об ошибке
-                        errorMessage = "Произошла неизвестная ошибка.";
-                    }
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
 
-                    // Отображаем сообщения об ошибках (предполагается, что у вас есть элемент с id 'registerError')
-                    $("#registerError").html(errorMessage).show();
-                    //Необязательно: прокручиваем страницу к разделу с ошибками
-                    $('html, body').animate({
-                        scrollTop: $("#registerError").offset().top
-                    }, 500);
-                }
-            },
-            error: function (xhr, status, error) {
-                // Обработка ошибок AJAX
-                let errorMessage = "Произошла ошибка при отправке запроса.";
-                if (xhr.status === 400) {
-                    errorMessage = "Некорректные данные формы."; // Добавьте более специфическую обработку ошибок, если они есть на стороне сервера
-                }
-                $("#registerError").html(errorMessage).show();
-                //Необязательно: прокручиваем страницу к разделу с ошибками
-                $('html, body').animate({
-                    scrollTop: $("#registerError").offset().top
-                }, 500);
-            }
-        });
+    if (password !== confirmPassword) {
+        alert('Пароли не совпадают!');
+        return;
+    }
+
+    const response = await fetch('/api/Account/Register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ Username: Username, Email: Email, Password: Password })
     });
+
+    if (response.ok) {
+        const data = await response.json();
+        if (data.success) {
+            alert(data.message); // Отображаем сообщение об успешной регистрации
+            window.location.href = 'your-redirect-url'; // Перенаправляем на другую страницу
+        } else {
+            let errorMessage = '';
+            if (data.errors) {
+                errorMessage = data.errors.join('\n');
+            } else {
+                errorMessage = 'Произошла ошибка при регистрации.';
+            }
+            alert(errorMessage); // Отображаем сообщение об ошибке
+        }
+    } else {
+        alert('Произошла ошибка при регистрации. Пожалуйста, попробуйте позже.');
+    }
 });

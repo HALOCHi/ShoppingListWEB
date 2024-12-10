@@ -27,7 +27,7 @@ public class AccountController : Controller
 
         if (await _userService.UserExistsAsync(model.Username, model.Email))
         {
-            return new JsonResult(new { success = false, error = "Пользователь с таким именем и email уже существует." });
+            return new JsonResult(new { success = false, error = "Пользователь с таким именем или email уже существует." }); // Сообщение об ошибке
         }
 
         var result = await _userService.RegisterUserAsync(model);

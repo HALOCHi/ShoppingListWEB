@@ -5,5 +5,5 @@ public interface IUserService
 {
     Task<IdentityResult> RegisterUserAsync(RegisterModel model);
 
-    Task<bool> UserExistsAsync(string username, string email);
+    public Task<bool> UserExistsAsync(string username, string email);
 }
