@@ -2,7 +2,7 @@
 
 namespace ShoppingListWEB.Models
 {
-    public class RegisterModel
+    public class LoginModel
     {
         public string Username { get; set; }
 
@@ -11,6 +11,3 @@ namespace ShoppingListWEB.Models
         public string Password { get; set; }
     }
 }
-
-
-

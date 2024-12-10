@@ -4,11 +4,10 @@ body {
   font-size: 18px;
   line-height: 27px;
   color: rgba(9, 9, 9, 1);
-  background-color: rgba(255, 255, 255, 1);
   font-weight: 400;
 }
 
-/* header */
+ header 
 
   .page-header {
     margin: 0;
@@ -19,7 +18,6 @@ body {
     background-color: rgba(77, 129, 183, 1);
     color: rgba(255, 255, 255, 1);
     font-weight: 600;
-    margin-bottom: 15px;
   }
 
   h1 {
@@ -32,13 +30,15 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0;
+    padding: 0;
   }
 
-/* main */
+ main 
 
   .main-content {
-    margin: 0 20px;
-    padding: 0;
+    margin: 0;
+    padding: 0 20px;
     font-weight: 600;
   }
 
@@ -48,15 +48,11 @@ body {
   }
 
   .reg-window {
-    border-radius: 20px;
     background-color: rgba(77, 129, 183, 1);
-    margin: 0;
-    padding: 20px;
     color: rgba(255, 255, 255, 1);
     font-weight: 400;
     font-size: 18px;
     line-height: 24px; 
-    display: inline-block;
   }
 
   .ent_and_reg {
@@ -65,6 +61,25 @@ body {
     flex-direction: column;
     align-items: center;
     row-gap: 20px;
+  }
+
+  .ind_and_reg {
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+  }
+
+  .ind_and_reg a {
+    text-decoration: none;
+    border-radius: 20px;
+    border-width: 1px;
+    border-color: rgba(77, 129, 183, 1);
+    background-color: rgba(77, 129, 183, 1);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 8px 12px;
+    color: rgba(255, 255, 255, 1);
   }
 
   .reg-window a {
@@ -87,14 +102,12 @@ body {
   }
 
   .entrance_form {
-    width: 300px;
-    margin: 100px 20px;
-    padding: 80px 25px;
-    display: flex;
-    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    display: flex; 
+    flex-wrap: wrap; 
     justify-content: space-between;
     row-gap: 40px;
-    border-radius: 20px;
     background-color: rgba(77, 129, 183, 1);
     color: rgba(255, 255, 255, 1);
     font-weight: 400;
@@ -117,16 +130,16 @@ body {
     height: 24px;
   }
 
-/* list */
+ list 
 
-/* Уберем отступы и поля у списков */
+ Уберем отступы и поля у списков 
 ul {
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
 
-/* Стили элементов списков */
+ Стили элементов списков 
 ul li {
   cursor: pointer;
   position: relative;
@@ -134,29 +147,30 @@ ul li {
   font-size: 18px;
   transition: 0.2s;
   border: 0.5px solid rgba(213, 223, 233, 1);
-  border-radius: 4px;
+  border-radius: 20px;
   margin: 20px 0;
+  background: rgba(255, 255, 255, 1);
+  
 
-  /* делаем элементы списка невыбираемыми */
+   делаем элементы списка невыбираемыми 
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
 
-/* Делаем фоновый цвет темнее при наведении курсора */
+ Делаем фоновый цвет темнее при наведении курсора 
 ul li:hover {
   background: rgba(213, 223, 233, 1);
 }
 
-/* При нажатии добавляем фоновый цвет и перечеркиваем текст */
+ При нажатии добавляем фоновый цвет и перечеркиваем текст 
 ul li.checked {
-  background: rgba(213, 223, 233, 1);
   color: rgba(77, 129, 183, 1);
   text-decoration: line-through;
 }
 
-/* При нажатии добавляем метку "отмечено" */
+ При нажатии добавляем метку "отмечено" 
 ul li.checked::before {
   content: '';
   position: absolute;
@@ -170,12 +184,13 @@ ul li.checked::before {
   width: 7px;
 }
 
-/* Стиль кнопки закрытия */
+ Стиль кнопки закрытия 
 .close {
   position: absolute;
   right: 0;
   top: 0;
   padding: 12px 16px 12px 16px;
+  border-radius: 20px;
 }
 
 .close:hover {
@@ -183,25 +198,26 @@ ul li.checked::before {
   color: white;
 }
 
-/* Стиль заголовка */
+ Стиль заголовка 
 .list_header {
   padding: 30px 40px;
   font-weight: 600;
   font-size: 18px;
   line-height: 24px;
+  color: rgba(255, 255, 255, 1);
 }
 
-/* Сбросим обтекание после заголовка */
+ Сбросим обтекание после заголовка 
 .list_header:after {
   content: "";
   display: table;
   clear: both;
 } 
 
-/* Стили поля ввода */
+ Стили поля ввода 
 #list_input {
   margin: 0;
-  border: 0.5px solid rgba(9, 9, 9, 1);
+  border: 0.5px solid rgba(213, 223, 233, 1);
   border-radius: 4px;
   width: 80%;
   padding: 10px;
@@ -210,11 +226,11 @@ ul li.checked::before {
   font-size: 18px;
 }
 
-/* Стили кнопки "Добавить" */
+ Стили кнопки "Добавить" 
 .addBtn {
   padding: 10px;
-  width: 20%;
-  background: rgba(213, 223, 233, 1);
+  width: 250px;
+  background: rgba(255, 255, 255, 1);
   color: rgba(9, 9, 9, 1);
   float: left;
   text-align: center;
@@ -225,10 +241,176 @@ ul li.checked::before {
 }
 
 .addBtn:hover {
-  background-color: rgba(77, 129, 183, 1);
+  background-color: rgba(213, 223, 233, 1);
+}
+
+.sBtn {
+  border: none;
+  background: none;
+}
+
+.sBtn:hover {
+  border: 0.5px solid rgba(213, 223, 233, 1);
+  border-radius: 4px;
 }
   
-@media screen and (min-width: 350px) and (max-width: 729px){
+@media screen and (max-width: 729px){
 
+  .entrance_form {
+    width: 300px;
+    margin: 100px auto;
+    padding: 80px 25px;
+    border-radius: 20px;
+  }
+
+  .reg-window {
+    border-radius: 20px;
+    background-color: rgba(77, 129, 183, 1);
+    margin: 0;
+    padding: 20px;
+    color: rgba(255, 255, 255, 1);
+    display: inline-block;
+  }
+
+   Стили кнопки "Добавить" 
+  .addBtn {
+    background: rgba(213, 223, 233, 1);
+}
+
+  .sBtn:hover {
+    border: 0.5px solid rgba(213, 223, 233, 1);
+    border-radius: 4px;
+}
+
+  .list_header {
+  color: rgba(9, 9, 9, 1);
 }
  
+  body {
+    background-color: rgba(255, 255, 255, 1);
+  }
+
+  .hide-on-mobile {
+    display: none;
+  }
+}
+ 
+
+@media screen and (min-width: 730px){
+  .hide-on-desktop {
+    display: none;
+  }
+
+   header 
+
+  .page-header {
+    margin: 0;
+    padding: 0 0 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: rgba(77, 129, 183, 1);
+    background-color: rgba(255, 255, 255, 1);
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+
+  h1 {
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(0, 0, 0, 1);
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 40px; 
+  }
+
+   main 
+
+  .main-content-r {
+    margin: 0;
+    padding: 45px 60px;
+    font-weight: 600;
+    background-color: rgba(77, 129, 183, 1);
+  }
+
+  .page_tittle {
+    margin: 0;
+    text-align: center;
+    margin-bottom: 150px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px; 
+    color: rgba(255, 255, 255, 1);
+  }
+
+  .hero {
+    margin: 0;
+    padding: 0;
+  }
+
+  .entrance_form {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; 
+    row-gap: 40px;
+    background-color: rgba(77, 129, 183, 1);
+    color: rgba(255, 255, 255, 1);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    align-items: center; 
+    justify-content: center; 
+  }
+
+  .entrance_form input {
+    border-radius: 20px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 1);
+    width: 70%;
+    color: rgba(77, 129, 183, 1);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .entrance_button {
+    height: 24px;
+  }
+
+  input.ent_reg_but {
+    width: 30%;
+  }
+
+  .main-content {
+    background-color: rgba(77, 129, 183, 1);
+  }
+
+  .main-content h1 {
+    background-color: rgba(77, 129, 183, 1);
+    color: rgba(255, 255, 255, 1);
+    margin: 0;
+    padding: 0;
+    padding-top: 20px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 160px;
+  }
+
+  .reg-window {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(77, 129, 183, 1);
+    color: rgba(255, 255, 255, 1);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px; 
+  }
+
+  body {
+    background-color: rgba(77, 129, 183, 1);
+  }
+}

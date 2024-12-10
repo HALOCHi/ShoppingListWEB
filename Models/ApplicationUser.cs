@@ -9,4 +9,3 @@ namespace ShoppingListWEB.Models
         //public string Surname { get; set; }        
     }
 }
-

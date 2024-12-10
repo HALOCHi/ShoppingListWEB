@@ -7,17 +7,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <title>Shopping-mate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body class="page">
     <header class="page-header">
-	<h1>ВОЙТИ</h1>
+	<h1 class="hide-on-desktop">Вход</h1>
+	<h1 class="hide-on-mobile">Shopping Mate</h1>
+	<div class="ind_and_reg hide-on-mobile">
+          <a href="index.html" class='ind_button'>Главная</a>
+          <a href="registration.html" class='ent_button'>Зарегистрироваться</a>
 	<figure class="logo">
-            <img src="img/logo.svg" width="98" height="87" alt="Логотип приложения Shopping-mate">
+            <img src="img/logo.svg" width="73" height="70" alt="Логотип приложения Shopping-mate">
+        </figure>
+      </div>
+      <figure class="logo hide-on-desktop">
+            <img src="img/logo.svg" width="73" height="70" alt="Логотип приложения Shopping-mate">
             <figcaption class="name">Shopping Mate</figcaption>
         </figure>
     </header>
-    <main class="main-content">
-        <form action="" method="post" class="entrance_form">
+    <main class="main-content-r">
+        <h2 class="hide-on-mobile page_tittle">Вход</h2>
+        <form id="loginForm" action="Login" method="post" class="entrance_form">
           <label for="name">Имя:</label>
           <input type="text" id="name" name="name" placeholder="  Иван" required>
           <label for="email">Почта:</label>
@@ -30,6 +40,6 @@
     <footer class="main-footer">
       
     </footer>
-    <script src=""></script>
+    <script src="login.js"></script>
   </body>
 </html>

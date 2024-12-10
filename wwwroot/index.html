@@ -7,27 +7,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <title>Shopping-mate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body class="page">
     <header class="page-header">
-	<h1>ГЛАВНАЯ</h1>
+	<h1 class="hide-on-desktop">Главная</h1>
+	<h1 class="hide-on-mobile">Shopping Mate</h1>
+	<div class="ind_and_reg hide-on-mobile">
+          <a href="entrance.html" class='ent_button'>Войти</a>
 	<figure class="logo">
-            <img src="img/logo.svg" width="98" height="87" alt="Логотип приложения Shopping-mate">
-            <figcaption class="name">Shopping Mate</figcaption>
+            <img src="img/logo.svg" width="73" height="70" alt="Логотип приложения Shopping-mate">
         </figure>
+      </div>
+      <figure class="logo hide-on-desktop">
+            <img src="img/logo.svg" width="73" height="70" alt="Логотип приложения Shopping-mate">
+            <figcaption class="name">Shopping Mate</figcaption>
+      </figure>
     </header>
     <main class="main-content">
       <section class="hero">
-        <h1>СОЗДАВАЙТЕ, <br>РЕДАКТИРУЙТЕ И <br>ДЕЛИТЕСЬ СПИСКАМИ ПОКУПОК <br>ЛЕГКО И УДОБНО.</h1>
-        <p class="subtitle">С Shopping Mate ваши покупки станут быстрее и проще!</p>
+        <h1>СОЗДАВАЙТЕ, <br class='hide-on-desktop'>РЕДАКТИРУЙТЕ И <br class='hide-on-desktop'>ДЕЛИТЕСЬ СПИСКАМИ ПОКУПОК <br class='hide-on-desktop'>ЛЕГКО И УДОБНО.</h1>
+        <p class="subtitle hide-on-desktop">С Shopping Mate ваши покупки станут быстрее и проще!</p>
       </section>
       <div class="reg-window">
         <p class="registration">Зарегистрируйтесь прямо сейчас и создайте свой идеальный список покупок!</p>
         <div class="ent_and_reg">
           <a href="registration.html" class='reg_button'>Зарегистрироваться</a>
-          <div class="entrance">
+          <div class="entrance hide-on-desktop">
             <p>Если есть  аккаунт</p>
-            <a href="file:///D:/SSD/shop/entrance.html" class='entrance_button'>Войти</a>
+            <a href="entrance.html" class='entrance_button'>Войти</a>
           </div>
         </div>
       </div>

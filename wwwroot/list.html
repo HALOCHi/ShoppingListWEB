@@ -7,18 +7,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <title>Shopping-mate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body class="page">
     <header class="page-header">
-	<h1>СПИСОК ПОКУПОК</h1>
+	<h1 class="hide-on-desktop">Список покупок</h1>
+	<h1 class="hide-on-mobile">Shopping Mate</h1>
+	<div class="ind_and_reg hide-on-mobile">
 	<figure class="logo">
-            <img src="img/logo.svg" width="98" height="87" alt="Логотип приложения Shopping-mate">
+            <img src="img/logo.svg" width="73" height="70" alt="Логотип приложения Shopping-mate">
+        </figure>
+      </div>
+      <figure class="logo hide-on-desktop">
+            <img src="img/logo.svg" width="73" height="70" alt="Логотип приложения Shopping-mate">
             <figcaption class="name">Shopping Mate</figcaption>
         </figure>
     </header>
     <main class="main-content">
         <div id="list" class="list_header">
   	  <h2>Ваши товары</h2>
+          <button class='sBtn hide-on-mobile'><img src="img/group_d.png" width="27" height="27" alt="Кнопка "поделиться""></button>
+          <button class='sBtn hide-on-desktop'><img src="img/group_t.png" width="27" height="27" alt="Кнопка "поделиться""></button>
   	  <input type="text" id="list_input" placeholder="Что купить...">
  	  <span onclick="newElement()" class="addBtn">Добавить</span>
 	</div>

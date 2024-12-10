@@ -5,26 +5,32 @@ using Microsoft.IdentityModel.Tokens;
 using ShoppingListWEB.Models;
 using System.Text;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddTransient<IUserService, UserService>(); // Или AddScoped
+builder.Services.AddScoped<SignInManager<ApplicationUser>>();
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Настройки паролей
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
-    // Настройки паролей
-    options.Password.RequireDigit = true;  // Требуется хотя бы одна цифра
-    options.Password.RequireLowercase = true; // Требуется хотя бы одна строчная буква
-    options.Password.RequireUppercase = true; // Требуется хотя бы одна заглавная буква
-    options.Password.RequireNonAlphanumeric = true; // Требуется хотя бы один символ, не являющийся буквой или цифрой
-    options.Password.RequiredLength = 8; // Минимальная длина пароля
-    // ...другие настройки по желанию
+    //options.Password.RequireDigit = true;  // Требуется хотя бы одна цифра
+    //options.Password.RequireLowercase = true; // Требуется хотя бы одна строчная буква
+    //options.Password.RequireUppercase = true; // Требуется хотя бы одна заглавная буква
+    //options.Password.RequireNonAlphanumeric = true; // Требуется хотя бы один символ, не являющийся буквой или цифрой
+    options.Password.RequiredLength = 6; // Минимальная длина пароля
 })
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders(); // Важно для сброса пароля
+
+builder.Services.AddScoped<SignInManager<ApplicationUser>>();
+builder.Services.AddControllersWithViews();
 
 builder.Services.AddAuthentication(options =>
 {
@@ -46,7 +52,6 @@ builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -55,6 +60,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
 
 app.UseRouting();
 app.UseAuthentication();
