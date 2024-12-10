@@ -1,16 +1,19 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using ShoppingListWEB.Models;
 
 public class AccountController : Controller
 {
     private readonly IUserService _userService;
     private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly ILogger<AccountController> _logger;
 
-    public AccountController(IUserService userService, SignInManager<ApplicationUser> signInManager)
+    public AccountController(IUserService userService, SignInManager<ApplicationUser> signInManager, ILogger<AccountController> logger)
     {
         _userService = userService;
         _signInManager = signInManager;
+        _logger = logger;
     }
 
 
@@ -24,14 +27,14 @@ public class AccountController : Controller
 
         if (await _userService.UserExistsAsync(model.Username, model.Email))
         {
-            return new JsonResult(new { success = false, error = "Пользователь с таким именем или email уже существует." });
+            return new JsonResult(new { success = false, error = "Пользователь с таким именем и email уже существует." });
         }
 
         var result = await _userService.RegisterUserAsync(model);
 
         if (result.Succeeded)
         {
-            return new JsonResult(new { success = true, redirectUrl = "/login.html" });
+            return Redirect("login.html");
         }
         else
         {
@@ -42,20 +45,26 @@ public class AccountController : Controller
     [HttpPost("Login")]
     public async Task<IActionResult> Login(LoginModel model)
     {
+        _logger.LogInformation("Попытка входа: Username={Username}", model.Username);
+
         if (!ModelState.IsValid)
         {
-            return new JsonResult(new { success = false, errors = ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage).ToList() });
+            _logger.LogWarning("Валидация модели не пройдена. Модель: {Model}", model);
+            return BadRequest(ModelState);
         }
 
-        var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, false, lockoutOnFailure: false);
+        var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, false, false);
 
         if (result.Succeeded)
         {
-            return new JsonResult(new { success = true, redirectUrl = "/list.html" });
+            _logger.LogInformation("Успешный вход: Username={Username}", model.Username);
+            return Ok();
         }
         else
         {
-            return new JsonResult(new { success = false, error = "Аккаунт не найден" });
+            _logger.LogWarning("Неудачный вход: Username={Username}", model.Username);
+            return Unauthorized(new { success = false, error = "Неверный логин или пароль" });
         }
     }
+
 }

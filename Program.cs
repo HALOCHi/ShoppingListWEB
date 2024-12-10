@@ -50,6 +50,11 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddScoped<IUserService, UserService>();
 
+builder.Services.AddLogging(loggingBuilder => {
+    loggingBuilder.AddConsole();
+    loggingBuilder.AddDebug();
+});
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())

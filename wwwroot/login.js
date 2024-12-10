@@ -1,21 +1,23 @@
-$(document).ready(function () {
-    $('#loginForm').submit(function (event) {
-        event.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: "/Account/Login",
-            data: $(this).serialize(),
-            dataType: "json",
-            success: function (response) {
-                if (response.success) {
-                    window.location.href = response.redirectUrl; // Перенаправляем на list.html
-                } else {
-                    alert(response.error); // Отображаем сообщение об ошибке
-                }
-            },
-            error: function (xhr, status, error) {
-                alert("Ошибка входа: " + error);
-            }
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    try {
+        const response = await fetch('/api/Account/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ Username: username, Password: password })
         });
-    });
+
+        if (response.ok) {
+            window.location.href = 'list.html'; // Переход на страницу списка покупок
+        } else {
+            const errorData = await response.json();
+            alert(errorData.error || 'Ошибка входа');
+        }
+    } catch (error) {
+        console.error('Ошибка:', error);
+        alert('Произошла ошибка');
+    }
 });
